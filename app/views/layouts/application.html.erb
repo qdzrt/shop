@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%= render 'application/head' %>
+  <body>
+
+  <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to "《Rails实践》", root_path, class: "navbar-brand" %>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <!--<li class="active"><%= link_to "网店首页", root_path %></li>-->
+            <!--<li><a href="#">我的订单</a></li>-->
+            <!--<li class="dropdown">-->
+              <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">全部分类 <b class="caret"></b></a>-->
+              <!--<ul class="dropdown-menu">-->
+                <!--<li><%= link_to "分类", root_path %></li>-->
+                <!--<li><%= link_to "分类", root_path %></li>-->
+                <!--<li><%= link_to "分类", root_path %></li>-->
+              <!--</ul>-->
+            <!--</li>-->
+            <li><%= link_to '开发功能', develop_fc_products_path %></li>
+
+          </ul>
+          <%= form_tag(products_path, method: "get", class: "navbar-form navbar-left", role: "search") do %>
+            <%= text_field_tag(:q, params[:q], placeholder: "商品名称", class: "form-control input-sm") %>
+            <%= submit_tag("搜索", class: "btn btn-info btn-sm") %>
+          <% end %>
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+              <li><%= link_to current_user.email, profile_path %></li>
+              <li><%= link_to "退出", destroy_user_session_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to "登录", new_user_session_path %></li>
+              <li><%= link_to "注册", new_user_registration_path %></li>
+            <% end %>
+            <i class="fa fa-gear"></i>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container main-container">
+
+      <%= render "application/flash" %>
+
+      <div class="row">
+        <%= yield %>
+
+        <!--<hr>-->
+        <!--&copy; 2015 <%= link_to "《Rails 实践》", "http://liwei78.gitbooks.io/rails-practice/", target: "_blank" %>网店演示-->
+        <%= yield(:page_javascript) if content_for?(:page_javascript) %>
+      </div>
+
+     </div>
+
+  </body>
+</html>

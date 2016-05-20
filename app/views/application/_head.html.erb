@@ -1,0 +1,33 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= content_for?(:title) ? yield(:title) : "《Rails实践》网店演示" %></title>
+  <%= csrf_meta_tags %>
+  <%= javascript_include_tag 'application' %>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+
+  <%= auto_discovery_link_tag(:rss, "/products/index.rss", {title: "RSS Feed"}) %>
+  <%= auto_discovery_link_tag(:atom, "/products/index.atom", {title: "ATOM Feed"}) %>
+
+  <!-- Bootstrap styles -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <!-- Generic page styles -->
+  <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+  <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
+  <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+  <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+  <!-- The Templates plugin is included to render the upload/download listings -->
+  <script src="//blueimp.github.io/JavaScript-Templates/js/tmpl.min.js"></script>
+  <!-- The Load Image plugin is included for the preview images and image resizing functionality -->
+  <script src="//blueimp.github.io/JavaScript-Load-Image/js/load-image.all.min.js"></script>
+  <!-- The Canvas to Blob plugin is included for image resizing functionality -->
+  <script src="//blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js"></script>
+  <!-- Bootstrap JS is not required, but included for the responsive demo navigation -->
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <!-- blueimp Gallery script -->
+  <script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
+
+  <%= yield(:page_stylesheet) if content_for?(:page_stylesheet) %>
+
+</head>

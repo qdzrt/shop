@@ -1,0 +1,28 @@
+<%= form_for(@photo) do |f| %>
+  <% if @photo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@photo.errors.count, "error") %> prohibited this photo from being saved:</h2>
+
+      <ul>
+      <% @photo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :product_id, value: params[:productId] %>
+  <div class="field">
+    <!--<input id='input-file' name="file[]" multiple type="file" class="file-loading"  %>-->
+    <%= f.file_field :avatar, class: 'file', multiple: true %>
+    <br>
+    <!--<input id="input-fcount-2" name="inputfcount3[]" multiple type="file" class="file-loading">-->
+  </div>
+
+  <div class="actions">
+    <%= f.submit '确定', :class => 'btn btn-primary' %>
+  </div>
+<% end %>
+
+
+

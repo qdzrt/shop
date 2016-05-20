@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Attachments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Cashadv</th>
+      <th>Image</th>
+      <th>Document</th>
+      <th>Audio</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @attachments.each do |attachment| %>
+      <tr>
+        <td><%= attachment.cashadv_id %></td>
+        <td><%= image_tag(attachment.image.url(:small)) %></td>
+        <td><%= attachment.document_file_name %></td>
+        <td><%= attachment.audio_file_name %></td>
+        <td><%= link_to 'Show', attachment %></td>
+        <td><%= link_to 'Edit', edit_attachment_path(attachment) %></td>
+        <td><%= link_to 'Destroy', attachment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Attachment', new_attachment_path %>

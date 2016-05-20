@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cashadv:</strong>
+  <%= @attachment.cashadv_id %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <a href="/musics/photo_download/<%=@attachment.id%>"><%= image_tag(@attachment.image.url(:small)) %></a>
+</p>
+
+<p>
+  <strong>Document:</strong>
+  <%= @attachment.document_file_name %>
+</p>
+
+<p>
+  <strong>Audio:</strong>
+  <%= @attachment.audio_file_name %>
+</p>
+
+<%= link_to 'Edit', edit_attachment_path(@attachment) %> |
+<%= link_to 'Back', attachments_path %>

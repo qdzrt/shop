@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cashadv_id: 1
+  image: MyText
+  document: MyText
+  audio: MyText
+
+two:
+  cashadv_id: 1
+  image: MyText
+  document: MyText
+  audio: MyText

@@ -1,0 +1,18 @@
+# CRM数据库配置
+default: &default
+  adapter: mysql2
+  host: 192.168.0.16
+  port: 3306
+  database: mca_crm
+  user: cuishouxitong
+  password: 6aK7bMriae
+  encoding: utf8
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default

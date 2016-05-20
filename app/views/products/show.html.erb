@@ -1,0 +1,54 @@
+<%- model_class = Product -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
+
+<!--<dl class="dl-horizontal">-->
+  <!--<dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>-->
+  <!--<dd><%= @product.name %></dd>-->
+<!--</dl>-->
+
+<div style="margin-bottom: 20px;min-height: 50px;width: 100%;">
+  <table>
+    <tr>
+      <td>name:</td>
+      <td><%= @product.name %></td>
+    </tr>
+    <tr>
+      <td>description:</td>
+      <td><%= @product.description %></td>
+    </tr>
+    <tr>
+      <td>price:</td>
+      <td>￥<%= @product.price %></td>
+    </tr>
+    <tr>
+      <td valign="top">Avatar_data:</td>
+      <td>
+        <div>
+          <% @product.photos.each do |photo| %>
+            <% if photo.avatar && photo.avatar_data['original'] %>
+              <div style="margin-right: 1px;float: left">
+                <%= link_to("#{photo.avatar_url(:original)}",target:'_blank') do %>
+                  <%= image_tag photo.avatar_url(:small), width: 150, class: 'img-thumbnail' %>
+                <% end %>
+              </div>
+            <% elsif !photo.avatar.nil? %>
+              <div style="margin-right: 1px;float: left">
+                <%= link_to("#{photo.avatar_url(:original)}") do %>
+                  <%= image_tag 'txt.png', width: 100, class: 'img-thumbnail' %>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div class="form-actions">
+  <%= link_to t('.edit', :default => t("helpers.links.edit")), edit_product_path(@product), :class => 'btn btn-primary' %>
+  <%= link_to t('.back', :default => t("helpers.links.back")), products_path, :class => 'btn btn-link'  %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")), product_path(@product), :method => 'delete', :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger pull-right' %>
+</div>
